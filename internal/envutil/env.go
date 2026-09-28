@@ -11,11 +11,13 @@ import (
 // if they are not already set in the current process environment.
 func AutoLoadEnv() {
 	candidates := []string{
+		"/run/secrets/mcp",
 		"/run/secrets/web-tools-env",
 	}
 
 	if home, err := os.UserHomeDir(); err == nil && home != "" {
 		candidates = append(candidates,
+			filepath.Join(home, ".config/sops-nix/secrets/mcp"),
 			filepath.Join(home, ".config/sops-nix/secrets/web-tools-env"),
 			filepath.Join(home, ".env"),
 		)
