@@ -7,10 +7,13 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/surtr85/miku-researcher/internal/envutil"
 	"github.com/surtr85/miku-researcher/internal/mcp"
 )
 
 func main() {
+	envutil.AutoLoadEnv()
+
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
