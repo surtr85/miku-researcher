@@ -28,7 +28,7 @@ type Client struct {
 func NewClient() *Client {
 	searxng := os.Getenv("SEARXNG_URL")
 	if searxng == "" {
-		searxng = "https://searxng.surtr.ir"
+		searxng = "http://localhost:8080"
 	}
 	tavily := os.Getenv("TAVILY_API_KEY")
 

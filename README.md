@@ -74,8 +74,8 @@ CGO_ENABLED=0 go build -ldflags="-s -w" -o bin/miku-researcher ./cmd/miku-resear
 Set environment variables in your MCP host configuration or shell environment:
 
 ```env
-SEARXNG_URL=https://searxng.surtr.ir   # Optional (Defaults to https://searxng.surtr.ir)
-TAVILY_API_KEY=tvly-xxxxxxxxxxxx       # Optional (For Tavily integration)
+SEARXNG_URL=https://your-searxng-domain.example   # Optional (Defaults to http://localhost:8080)
+TAVILY_API_KEY=tvly-xxxxxxxxxxxx                  # Optional (For Tavily integration)
 ```
 
 Ensure `defuddle` is available in your `$PATH` for webpage cleaning capabilities.
