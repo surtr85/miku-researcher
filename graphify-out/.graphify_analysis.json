@@ -1,0 +1,217 @@
+{
+  "communities": {
+    "0": [
+      "go_type_encoding_json_rawmessage",
+      "internal_mcp_protocol",
+      "mcp_contentitem",
+      "mcp_inputschema",
+      "mcp_propertydef",
+      "mcp_request",
+      "mcp_response",
+      "mcp_rpcerror",
+      "mcp_server_calltool",
+      "mcp_server_sendresult",
+      "mcp_tool",
+      "mcp_toolcallparams",
+      "mcp_toolresult"
+    ],
+    "1": [
+      "go_type_context_context",
+      "go_type_net_http_client",
+      "internal_orchestrator_engine",
+      "internal_orchestrator_engine_go_orchestrator_researchengine",
+      "internal_orchestrator_engine_newresearchengine",
+      "internal_search_client",
+      "internal_search_client_go_search_client",
+      "internal_search_client_go_search_resultitem",
+      "internal_search_client_newclient",
+      "orchestrator_researchengine_deepresearch",
+      "search_client_searxngsearch",
+      "search_client_tavilysearch"
+    ],
+    "2": [
+      "go_type_io_reader",
+      "go_type_io_writer",
+      "internal_mcp_server",
+      "internal_mcp_server_newserver",
+      "mcp_server",
+      "mcp_server_gettools",
+      "mcp_server_handlerequest",
+      "mcp_server_senderror",
+      "mcp_server_serve"
+    ],
+    "3": [
+      "go_type_testing_t",
+      "internal_mcp_server_test",
+      "internal_mcp_server_test_testmcpserverlifecycle",
+      "internal_orchestrator_engine_formatsearchresults",
+      "internal_orchestrator_engine_test",
+      "internal_orchestrator_engine_test_testformatsearchresults"
+    ],
+    "4": [
+      "go_type_time_duration",
+      "internal_reader_defuddle",
+      "internal_reader_defuddle_go_reader_reader",
+      "internal_reader_defuddle_newreader",
+      "reader_pageresult",
+      "reader_reader_readpage"
+    ],
+    "5": [
+      "cmd_miku_researcher_main",
+      "cmd_miku_researcher_main_main",
+      "internal_envutil_env",
+      "internal_envutil_env_autoloadenv",
+      "internal_envutil_env_loadenvfile"
+    ],
+    "6": [
+      "flake",
+      "home_amadeus_projects_workspace_miku_researcher_nix",
+      "pkg_buildgomodule",
+      "pkg_mkshell"
+    ],
+    "7": [
+      "pkg_github_com_surtr85_miku_researcher"
+    ]
+  },
+  "cohesion": {
+    "0": 0.24358974358974358,
+    "1": 0.2727272727272727,
+    "2": 0.4166666666666667,
+    "3": 0.3333333333333333,
+    "4": 0.5333333333333333,
+    "5": 0.5,
+    "6": 0.5,
+    "7": 1.0
+  },
+  "gods": [
+    {
+      "id": "mcp_server",
+      "label": "Server",
+      "degree": 13
+    },
+    {
+      "id": "internal_mcp_server_newserver",
+      "label": "NewServer()",
+      "degree": 9
+    },
+    {
+      "id": "internal_search_client_go_search_client",
+      "label": "Client",
+      "degree": 7
+    },
+    {
+      "id": "internal_orchestrator_engine_go_orchestrator_researchengine",
+      "label": "ResearchEngine",
+      "degree": 6
+    },
+    {
+      "id": "internal_reader_defuddle_go_reader_reader",
+      "label": "Reader",
+      "degree": 6
+    },
+    {
+      "id": "internal_orchestrator_engine_newresearchengine",
+      "label": "NewResearchEngine()",
+      "degree": 5
+    },
+    {
+      "id": "internal_reader_defuddle_newreader",
+      "label": "NewReader()",
+      "degree": 5
+    },
+    {
+      "id": "internal_search_client_go_search_resultitem",
+      "label": "ResultItem",
+      "degree": 4
+    },
+    {
+      "id": "internal_search_client_newclient",
+      "label": "NewClient()",
+      "degree": 4
+    },
+    {
+      "id": "internal_orchestrator_engine_formatsearchresults",
+      "label": "FormatSearchResults()",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "main()",
+      "target": "NewServer()",
+      "source_files": [
+        "cmd/miku-researcher/main.go",
+        "internal/mcp/server.go"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "TestMCPServerLifecycle()",
+      "target": "NewServer()",
+      "source_files": [
+        "internal/mcp/server_test.go",
+        "internal/mcp/server.go"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "main()",
+      "target": "AutoLoadEnv()",
+      "source_files": [
+        "cmd/miku-researcher/main.go",
+        "internal/envutil/env.go"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "ResearchEngine",
+      "target": "Reader",
+      "source_files": [
+        "internal/orchestrator/engine.go",
+        "internal/reader/defuddle.go"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "Server",
+      "target": "ResearchEngine",
+      "source_files": [
+        "internal/mcp/server.go",
+        "internal/orchestrator/engine.go"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `Server` connect `Community 2` to `Community 0`, `Community 1`, `Community 4`?",
+      "why": "High betweenness centrality (0.335) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `NewServer()` connect `Community 2` to `Community 1`, `Community 3`, `Community 4`, `Community 5`?",
+      "why": "High betweenness centrality (0.255) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `main()` connect `Community 5` to `Community 2`?",
+      "why": "High betweenness centrality (0.126) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `miku-researcher.nix`, `pkgs.buildGoModule`, `pkgs.mkShell` to the rest of the system?",
+      "why": "4 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

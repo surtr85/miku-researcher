@@ -1,0 +1,68 @@
+{
+  "cmd/miku-researcher/main.go": {
+    "mtime": 1790624319.0704756,
+    "seen": 1791253079.5646324,
+    "ast_hash": "917fc21b489b1ee46f941a4d6a0cb56d",
+    "semantic_hash": "917fc21b489b1ee46f941a4d6a0cb56d"
+  },
+  "flake.nix": {
+    "mtime": 1790622294.4024582,
+    "seen": 1791253079.5646374,
+    "ast_hash": "04a797ebda75a173841ca6a6aef8fa68",
+    "semantic_hash": "04a797ebda75a173841ca6a6aef8fa68"
+  },
+  "go.mod": {
+    "mtime": 1790622181.3848252,
+    "seen": 1791253079.5646396,
+    "ast_hash": "bdd5d9e070786bd1ec6bb0f2dc891cad",
+    "semantic_hash": "bdd5d9e070786bd1ec6bb0f2dc891cad"
+  },
+  "internal/envutil/env.go": {
+    "mtime": 1790624804.2640562,
+    "seen": 1791253079.564641,
+    "ast_hash": "909a6c0298736aaf5fd0e89271fdd779",
+    "semantic_hash": "909a6c0298736aaf5fd0e89271fdd779"
+  },
+  "internal/mcp/protocol.go": {
+    "mtime": 1790622191.8315418,
+    "seen": 1791253079.5646422,
+    "ast_hash": "439f6bb498a8efac640d3e938caf879b",
+    "semantic_hash": "439f6bb498a8efac640d3e938caf879b"
+  },
+  "internal/mcp/server.go": {
+    "mtime": 1790622242.6863565,
+    "seen": 1791253079.5646434,
+    "ast_hash": "4e2442260fd25f85c27773697c8a7d80",
+    "semantic_hash": "4e2442260fd25f85c27773697c8a7d80"
+  },
+  "internal/mcp/server_test.go": {
+    "mtime": 1790622233.0215578,
+    "seen": 1791253079.5646446,
+    "ast_hash": "2e88ff883f0c43cb9f38d8ef9699f1e3",
+    "semantic_hash": "2e88ff883f0c43cb9f38d8ef9699f1e3"
+  },
+  "internal/orchestrator/engine.go": {
+    "mtime": 1790622207.5841408,
+    "seen": 1791253079.564646,
+    "ast_hash": "b73af19a222057c3f9792161c58438ff",
+    "semantic_hash": "b73af19a222057c3f9792161c58438ff"
+  },
+  "internal/orchestrator/engine_test.go": {
+    "mtime": 1790622226.624697,
+    "seen": 1791253079.5646472,
+    "ast_hash": "a9387fa5aed9cf8f7b00ac62eed00889",
+    "semantic_hash": "a9387fa5aed9cf8f7b00ac62eed00889"
+  },
+  "internal/reader/defuddle.go": {
+    "mtime": 1790622195.253452,
+    "seen": 1791253079.5646482,
+    "ast_hash": "2488fc222b2003fac0da6728486aab31",
+    "semantic_hash": "2488fc222b2003fac0da6728486aab31"
+  },
+  "internal/search/client.go": {
+    "mtime": 1790624799.7608826,
+    "seen": 1791253079.5646496,
+    "ast_hash": "f767cd0981d68e7f6958998a585f13bf",
+    "semantic_hash": "f767cd0981d68e7f6958998a585f13bf"
+  }
+}
