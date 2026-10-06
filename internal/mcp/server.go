@@ -133,6 +133,30 @@ func (s *Server) GetTools() []Tool {
 				Required: []string{"query"},
 			},
 		},
+		{
+			Name:        "firecrawl_scrape",
+			Description: "Directly scrape and extract pristine markdown from any modern dynamic webpage or JavaScript-heavy application using Firecrawl API.",
+			InputSchema: InputSchema{
+				Type: "object",
+				Properties: map[string]PropertyDef{
+					"url": {
+						Type:        "string",
+						Description: "Target webpage URL to scrape.",
+					},
+					"max_chars": {
+						Type:        "integer",
+						Description: "Maximum characters to return to conserve tokens (default: 6000, 0 = unlimited).",
+						Default:     6000,
+					},
+					"only_main_content": {
+						Type:        "boolean",
+						Description: "Only extract main content excluding navbars, headers and footers (default: true).",
+						Default:     true,
+					},
+				},
+				Required: []string{"url"},
+			},
+		},
 	}
 }
 
@@ -293,6 +317,41 @@ func (s *Server) callTool(ctx context.Context, name string, rawArgs json.RawMess
 		output := orchestrator.FormatSearchResults(items, answer)
 		return &ToolResult{
 			Content: []ContentItem{{Type: "text", Text: output}},
+		}, nil
+
+	case "firecrawl_scrape":
+		var args struct {
+			URL             string `json:"url"`
+			MaxChars        int    `json:"max_chars"`
+			OnlyMainContent *bool  `json:"only_main_content"`
+		}
+		if err := json.Unmarshal(rawArgs, &args); err != nil {
+			return nil, err
+		}
+		if strings.TrimSpace(args.URL) == "" {
+			return nil, fmt.Errorf("url parameter cannot be empty")
+		}
+		maxChars := 6000
+		if args.MaxChars > 0 {
+			maxChars = args.MaxChars
+		}
+		onlyMainContent := true
+		if args.OnlyMainContent != nil {
+			onlyMainContent = *args.OnlyMainContent
+		}
+
+		res, err := s.pageReader.ScrapeWithFirecrawl(ctx, args.URL, maxChars, onlyMainContent)
+		if err != nil {
+			return nil, err
+		}
+		if res.Error != "" {
+			return &ToolResult{
+				IsError: true,
+				Content: []ContentItem{{Type: "text", Text: res.Error}},
+			}, nil
+		}
+		return &ToolResult{
+			Content: []ContentItem{{Type: "text", Text: res.Content}},
 		}, nil
 
 	default:
