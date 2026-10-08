@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="banner.png" alt="Miku Researcher Banner" width="100%">
+  <picture>
+    <source type="image/svg+xml" srcset="assets/banner.svg">
+    <img src="assets/banner.png" alt="Miku Researcher Banner" width="100%">
+  </picture>
 </p>
 
 <h1 align="center">Miku Researcher (miku-researcher)</h1>
